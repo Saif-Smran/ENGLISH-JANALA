@@ -8,6 +8,30 @@ function removeLoder() {
     document.getElementById('lesson-container').classList.remove('hidden');
 }
 
+function logout(){
+    document.getElementById('hero').classList.remove('hidden')
+    document.getElementById('hiden').classList.add('hidden')
+    document.getElementById('Name').value = ''
+    document.getElementById('password').value = ''
+}
+
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const name = document.getElementById('Name').value
+    const password = document.getElementById('password').value
+    console.log(name, password);
+    if(name == '' || name == undefined){
+        alert('Please Tell Your Name First !!')
+        return
+    }
+    if(password != '123456'){
+        alert('Please Enter Correct Password')
+        return
+    }
+    document.getElementById('hero').classList.add('hidden')
+    document.getElementById('hiden').classList.remove('hidden')
+})
 
 function removeActive() {
     const activeBtns = document.getElementsByClassName('active');
