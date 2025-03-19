@@ -29,6 +29,13 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
         alert('Please Enter Correct Password')
         return
     }
+
+    Swal.fire({
+        title: "আপনার Login সফল হয়েছে",
+        icon: "success",
+        draggable: false
+      });
+
     document.getElementById('hero').classList.add('hidden')
     document.getElementById('hiden').classList.remove('hidden')
 })
@@ -107,7 +114,7 @@ const displayLessonCards = (lesson) => {
             <button onclick="loadLesonDetails('${lesson.id}')" class="btn p-3 rounded-lg">
                 <i class="fas fa-info text-gray-500"></i>
             </button>
-            <button class="btn p-3 rounded-lg">
+            <button onclick="pronounceWord('${lesson.word}')"  class="btn p-3 rounded-lg">
                 <i class="fas fa-volume-up text-gray-500"></i>
             </button>
         </div>
@@ -164,6 +171,12 @@ function displayLessonDetails(data){
 
 
 }
+
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-EN'; // English
+    window.speechSynthesis.speak(utterance);
+  }
 
 LoadCatagories()
 
