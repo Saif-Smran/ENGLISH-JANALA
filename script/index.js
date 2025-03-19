@@ -49,10 +49,22 @@ function LoadLessons(level_no){
 const displayLessonCards = (lesson) => {
     const lessonContainer = document.getElementById('lesson-container')
     lessonContainer.innerHTML = ''
+    if(lesson.length == 0){
+        lessonContainer.innerHTML = `
+            <div
+                    class="col-span-full hind-siliguri text-center h-72 flex flex-col justify-center items-center gap-4 bg-[#F8F8F8] rounded-lg ">
+                    <img class="mt-20" src="./assets/alert-error.png" alt="">
+                    <h3 class="text-sm text-gray-400">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</h3>
+                    <h1 class="font-medium text-4xl pb-20">নেক্সট Lesson এ যান</h1>
+                </div>
+        `
+        return
+    }
+
     lesson.forEach(lesson => {
         const lessonElement = document.createElement('div')
         lessonElement.innerHTML = `
-            <div class="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full text-center h-[280px]">
+            <div class="bg-white rounded-lg p-8 max-w-sm w-full text-center h-[280px]">
         <h1 class="text-2xl font-bold mb-2">${lesson.word}</h1>
         <p class="text-gray-600 font-medium text-lg mb-4">Meaning /Pronounciation</p>
         <p class="text-xl font-semibold text-gray-700 mb-6">"${lesson.meaning == null ? 'অর্থ নেই'
