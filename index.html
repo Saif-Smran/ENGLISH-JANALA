@@ -13,17 +13,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiro+Bangla:ital@0;1&display=swap"
+        rel="stylesheet">
 
     <style>
         .popins {
             font-family: 'Poppins', sans-serif;
         }
+
         .hind-siliguri {
             font-family: 'Hind Siliguri', sans-serif;
         }
+
         .tiro-bangla {
             font-family: 'Tiro Bangla', sans-serif;
+        }
+        .active {
+            background-color: #422AD5;
+            color: white;
         }
     </style>
 
@@ -33,23 +41,117 @@
 </head>
 
 <body>
-    <header class="bg-[#e6e3e3] bg-opacity-100">
-        <nav class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="">
-                <p class="flex gap-2 items-center text-xl"><span class="popins font-semibold">English</span> <img src="./assets/logo.png" alt="logo"> <span class="tiro-bangla">জানালা</span></p>
-            </div>
-            <div class=" flex gap-4 items-center">
-                <button class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question fa-lg "></i> FAQ</button>
-                <button class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open fa-lg"></i> Learn</button>
-                <button class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i> Logout</button>
-            </div>
+    <header class="">
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-[#ebe9e9] bg-opacity-50 shadow-md w-full">
+            <section class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center ">
+                <div class="">
+                    <p class="flex gap-2 items-center text-xl"><span class="popins font-semibold">English</span> <img
+                            src="./assets/logo.png" alt="logo"> <span class="tiro-bangla">জানালা</span></p>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <button onclick="scrollToSection('FAQ')" class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question fa-lg"></i>
+                        FAQ</button>
+                    <button onclick="scrollToSection('Learn')" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open fa-lg"></i> Learn</button>
+                    <button class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+                        Logout</button>
+                </div>
+            </section>
         </nav>
         <hr class="border-t-2 border-gray-300 opacity-50">
     </header>
-    <main class="max-w-screen-xl mx-auto px-6 py-4 bg-[#max-w-screen-xl mx-auto px-6 py-4]">
-        sdfgdsfgs
-    </main>
+    <main class="max-w-screen-xl mx-auto px-6 py-4 bg-white ">
+        <section class="flex justify-between items-center h-screen gap-10 my-4">
+            <div class="w-1/2 space-y-4">
+                <h1 class="text-5xl popins font-bold"><span class="text-[#00BCFF]">English</span> is Easy!!</h1>
+                <p class="text-2xl hind-siliguri">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+                    আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+                <div class="mt-4 flex flex-col gap-4">
+                    <input type="text" name="name" id="Name" placeholder="Enter Your Name" class="input" required>
+                    <input type="password" name="password" id="password " placeholder="Enter Your Password (123456)"
+                        class="input" required>
+                    <button class="btn btn-primary w-1/4">Get Started</button>
+                </div>
+            </div>
+            <div class="w-1/2">
+                <img src="./assets/hero-student.png" alt="hero" class="w-full">
+            </div>
+        </section>
+        <section id="Learn" class="min-h-screen pb-6 pt-20 my-4 flex flex-col gap-4 justify-center items-center">
+            <h2 class="font-bold popins text-4xl mt-4 mb-9 text-center"><span class="text-[#00BCFF]">Let's</span> Learn
+                Vocabularies</h2>
+            <div id="learn-catagory" class="flex justify-center items-center gap-4 mx-auto">
+                <!-- <button class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open fa-lg"></i> Learn</button> -->
+            </div>
+            <div id="lesson-container" class="w-full grid grid-cols-3 gap-4 mt-4 py-6">
+                <div
+                    class="col-span-full hind-siliguri text-center h-52 flex flex-col justify-center items-center gap-4 bg-[#F8F8F8] rounded-lg">
+                    <h3 class="text-sm text-gray-400">আপনি এখনো কোন Lesson Select করেন নি</h3>
+                    <h1 class="font-medium text-4xl">একটি Lesson Select করুন।</h1>
+                </div>
 
+            </div>
+        </section>
+        <section id="FAQ" class="min-h-screen pb-6 pt-20 my-4 popins flex flex-col gap-4 justify-center items-center">
+            <h2 class="text-4xl font-bold text-center"><span class="text-[#00BCFF]">Frequently</span> Asked Questions
+            </h2>
+            <div class="accordion my-4 space-y-4">
+                <div class="collapse collapse-arrow bg-[#F8F8F8] border border-base-300">
+                    <input type="radio" name="my-accordion-2" checked="checked" />
+                    <div class="collapse-title font-semibold">1. How can I start learning English on this website?</div>
+                    <div class="collapse-content text-sm">You can start by exploring our beginner-friendly lessons,
+                        interactive exercises, and practice tests. Simply visit our homepage and choose a course that
+                        fits your level.</div>
+                </div>
+                <div class="collapse collapse-arrow bg-[#F8F8F8] border border-base-300">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title font-semibold">2. Is this website free to use?</div>
+                    <div class="collapse-content text-sm">Yes! English জানালা offers free resources for learning
+                        English. Some advanced courses or features may require a premium subscription, but most lessons
+                        are accessible for free.</div>
+                </div>
+                <div class="collapse collapse-arrow bg-[#F8F8F8] border border-base-300">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title font-semibold">3. Do I need to create an account?</div>
+                    <div class="collapse-content text-sm">You can access some lessons without an account, but creating a
+                        free account lets you track progress, save lessons, and participate in quizzes.</div>
+                </div>
+                <div class="collapse collapse-arrow bg-[#F8F8F8] border border-base-300">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title font-semibold">4. How can I build my English vocabulary?</div>
+                    <div class="collapse-content text-sm">You can improve your vocabulary by using our daily word lists,
+                        flashcards, quizzes, and interactive exercises. Reading articles and watching videos with
+                        subtitles also helps.</div>
+                </div>
+                <div class="collapse collapse-arrow bg-[#F8F8F8] border border-base-300">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title font-semibold">5. Do you offer certificates for completed courses?</div>
+                    <div class="collapse-content text-sm">Yes! After completing a course, you may receive a digital
+                        certificate as proof of completion. Check the course details to see if a certificate is
+                        available.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-[#f7f5f1] mt-6">
+        <hr class="border-t-2 border-orange-300 opacity-50">
+        <section class="max-w-screen-xl mx-auto py-4 flex justify-between items-center">
+            <div class="flex flex-col pt-8">
+                <p class="flex gap-2 items-center text-xl mb-6"><span class="popins font-semibold">English</span> <img
+                        src="./assets/logo.png" alt="logo"> <span class="tiro-bangla">জানালা</span></p>
+                <p class="text-xl hind-siliguri">ইংরেজি শিখুন সহজে</p>
+                <p class="text-lg hind-siliguri">Providing ED-Tech Applications since 2025</p>
+            </div>
+            <div class="flex flex-col pt-8 gap-4">
+                <h3 class="font-semibold popins text-gray-400">Follow us</h3>
+                <div class="flex gap-4 items-center">
+                    <img src="./assets/fb-thumb.png" alt="facefook">
+                    <img src="./assets/youtube-thumb.png" alt="youtube-thumb">
+                    <img src="./assets/instagram-thumb.png" alt="instagram-thumb">
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="./script/index.js"></script>
 </body>
- 
+
 </html>
