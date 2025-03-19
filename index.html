@@ -29,6 +29,7 @@
         .tiro-bangla {
             font-family: 'Tiro Bangla', sans-serif;
         }
+
         .active {
             background-color: #422AD5;
             color: white;
@@ -49,10 +50,13 @@
                             src="./assets/logo.png" alt="logo"> <span class="tiro-bangla">জানালা</span></p>
                 </div>
                 <div class="flex gap-4 items-center">
-                    <button onclick="scrollToSection('FAQ')" class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question fa-lg"></i>
+                    <button onclick="scrollToSection('FAQ')" class="btn btn-outline btn-primary"><i
+                            class="fa-solid fa-circle-question fa-lg"></i>
                         FAQ</button>
-                    <button onclick="scrollToSection('Learn')" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open fa-lg"></i> Learn</button>
-                    <button class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+                    <button onclick="scrollToSection('Learn')" class="btn btn-outline btn-primary"><i
+                            class="fa-solid fa-book-open fa-lg"></i> Learn</button>
+                    <button class="btn btn-outline btn-primary"><i
+                            class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
                         Logout</button>
                 </div>
             </section>
@@ -81,6 +85,9 @@
                 Vocabularies</h2>
             <div id="learn-catagory" class="flex justify-center items-center gap-4 mx-auto">
                 <!-- <button class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open fa-lg"></i> Learn</button> -->
+            </div>
+            <div id="loder" class="text-center py-7 hidden">
+                <span class="loading loading-dots loading-xl "></span>
             </div>
             <div id="lesson-container" class="w-full grid grid-cols-3 gap-4 mt-4 py-6 pl-4 bg-[#F8F8F8] rounded-lg">
                 <div
@@ -157,6 +164,20 @@
             </div>
         </section>
     </footer>
+    <dialog id="details" class="modal">
+        <div class="modal-box">
+            <div id="modal-detail">
+                <div id="leson_detail_container">
+                    
+                </div>
+                <div class="modal-action flex justify-start">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Complete Learning</button>
+                    </form>
+                </div>
+            </div>
+    </dialog>
     <script src="./script/index.js"></script>
 </body>
 

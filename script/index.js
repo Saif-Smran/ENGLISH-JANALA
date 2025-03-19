@@ -1,4 +1,13 @@
 // console.log('Hello, world!');
+function showLoder() {
+    document.getElementById('loder').classList.remove('hidden');
+    document.getElementById('lesson-container').classList.add('hidden');
+}
+function removeLoder() {
+    document.getElementById('loder').classList.add('hidden');
+    document.getElementById('lesson-container').classList.remove('hidden');
+}
+
 
 function removeActive() {
     const activeBtns = document.getElementsByClassName('active');
@@ -33,8 +42,8 @@ function renderCatagories(catagories){
 }
 
 function LoadLessons(level_no){
-    console.log(level_no);
-    
+    // console.log(level_no);
+    showLoder()
     removeActive()
     const url = `https://openapi.programming-hero.com/api/level/${level_no}`
     fetch(url).then(res => res.json()).then(data =>{
@@ -58,6 +67,7 @@ const displayLessonCards = (lesson) => {
                     <h1 class="font-medium text-4xl pb-20">নেক্সট Lesson এ যান</h1>
                 </div>
         `
+        removeLoder()
         return
     }
 
@@ -70,10 +80,10 @@ const displayLessonCards = (lesson) => {
         <p class="text-xl font-semibold text-gray-700 mb-6">"${lesson.meaning == null ? 'অর্থ নেই'
             :lesson.meaning} "/" ${lesson.pronunciation}"</p>
         <div class="flex justify-between items-center">
-            <button  class="bg-gray-100 p-3 rounded-lg">
+            <button onclick="loadLesonDetails('${lesson.id}')" class="btn p-3 rounded-lg">
                 <i class="fas fa-info text-gray-500"></i>
             </button>
-            <button class="bg-gray-100 p-3 rounded-lg">
+            <button class="btn p-3 rounded-lg">
                 <i class="fas fa-volume-up text-gray-500"></i>
             </button>
         </div>
@@ -81,6 +91,54 @@ const displayLessonCards = (lesson) => {
         `
         lessonContainer.appendChild(lessonElement)
     })
+    removeLoder()
+}
+
+
+function loadLesonDetails(id){
+    console.log(id);
+    
+    const url = `https://openapi.programming-hero.com/api/word/${id}`
+    fetch(url).then(res => res.json()).then(data => {
+        displayLessonDetails(data.data)
+    })
+}
+
+
+function displayLessonDetails(data){
+    document.getElementById('details').showModal()
+
+    const detailsContainer = document.getElementById('leson_detail_container')
+    let div = `
+    <div class="flex space-x-2 mt-2">
+                                <span class="bg-blue-100 text-gray-800 px-3 py-1 rounded-lg">${data.synonyms[0]}</span>
+                                <span class="bg-blue-100 text-gray-800 px-3 py-1 rounded-lg">${data.synonyms[1]}</span>
+                                <span class="bg-blue-100 text-gray-800 px-3 py-1 rounded-lg">${data.synonyms[2]}</span>
+                            </div>
+    `
+    detailsContainer.innerHTML = `
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+                        <h1 class="text-2xl font-bold mb-4">${data.word} (<i
+                                class="fa-solid fa-microphone-lines fa-lg"></i>: ${data.pronunciation})
+                        </h1>
+                        <div class="mb-4">
+                            <h2 class="text-lg font-semibold">Meaning</h2>
+                            <p class="text-xl">${data.meaning == null ? 'অর্থ খুঁজে পাওয়া যায়নি'
+                                :data.meaning}</p>
+                        </div>
+                        <div class="mb-4">
+                            <h2 class="text-lg font-semibold">Example</h2>
+                            <p class="text-gray-700">${data.sentence}</p>
+                        </div>
+                        <div class="mb-4">
+                            <h2 class="text-lg font-semibold">সমার্থক শব্দ গুলো</h2>
+                            ${data.synonyms.length == 0 ? '' : div}
+                        </div>
+                    </div>
+    
+    `
+
+
 }
 
 LoadCatagories()
